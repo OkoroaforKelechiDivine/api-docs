@@ -45,11 +45,8 @@ public class SubscriptionControllerTest {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<SubscriptionRequest> entity = new HttpEntity<>(request, headers);
         ResponseEntity<SubscriptionResponse> responseEntity = ResponseEntity.ok(expectedResponse);
-
         when(restTemplate.postForEntity(url, entity, SubscriptionResponse.class)).thenReturn(responseEntity);
-
         SubscriptionResponse actualResponse = subscriptionService.createSubscription(request);
-
         assertEquals(expectedResponse, actualResponse);
         verify(restTemplate, times(1)).postForEntity(url, entity, SubscriptionResponse.class);
     }
@@ -59,14 +56,12 @@ public class SubscriptionControllerTest {
         String publicKey = "SBPUBK_DQ24K6T5TI1WOAOYPWWYMGMHKDRVEGPW";
         String url = "https://seerbitapi.com/api/v2/recurring/publicKey/{publicKey}";
         SubscriptionResponse expectedResponse = createMockSubscriptionResponse();
-
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Void> entity = new HttpEntity<>(headers);
         ResponseEntity<SubscriptionResponse> responseEntity = ResponseEntity.ok(expectedResponse);
         when(restTemplate.postForEntity(url, entity, SubscriptionResponse.class, publicKey)).thenReturn(responseEntity);
         SubscriptionResponse actualResponse = subscriptionService.getMerchantSubscriptions(publicKey);
-
         verify(restTemplate, times(1)).postForEntity(url, entity, SubscriptionResponse.class, publicKey);
         assertEquals(expectedResponse, actualResponse);
     }
@@ -81,10 +76,8 @@ public class SubscriptionControllerTest {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<SubscriptionResponse> responseEntity = ResponseEntity.ok(expectedResponse);
-
         when(restTemplate.postForEntity(url, entity, SubscriptionResponse.class)).thenReturn(responseEntity);
         SubscriptionResponse actualResponse = subscriptionService.getCustomerSubscription(publicKey, customerId);
-
         assertEquals(expectedResponse, actualResponse);
         verify(restTemplate, times(1)).postForEntity(url, entity, SubscriptionResponse.class);
     }
