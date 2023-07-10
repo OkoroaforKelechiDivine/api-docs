@@ -14,7 +14,7 @@ import seerbit.backend.models.payments.Payments;
 import seerbit.backend.models.subscription.SubscriptionData;
 import seerbit.backend.models.subscription.SubscriptionRequest;
 import seerbit.backend.models.subscription.SubscriptionResponse;
-import seerbit.backend.services.SubscriptionService;
+import seerbit.backend.services.subscription.SubscriptionService;
 
 import java.util.ArrayList;
 import java.util.List;

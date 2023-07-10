@@ -1,4 +1,4 @@
-package seerbit.backend.controller.checkout;
+package seerbit.backend.controller.subscription;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,7 +6,7 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import seerbit.backend.models.subscription.SubscriptionRequest;
 import seerbit.backend.models.subscription.SubscriptionResponse;
-import seerbit.backend.services.SubscriptionService;
+import seerbit.backend.services.subscription.SubscriptionService;
 
 @RestController
 @RequestMapping("/subscriptions")

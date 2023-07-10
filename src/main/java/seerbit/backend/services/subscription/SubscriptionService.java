@@ -1,4 +1,4 @@
-package seerbit.backend.services;
+package seerbit.backend.services.subscription;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
