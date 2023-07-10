@@ -4,8 +4,8 @@ package seerbit.backend.controller.checkout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-import seerbit.backend.models.dto.SubscriptionRequest;
-import seerbit.backend.models.dto.SubscriptionResponse;
+import seerbit.backend.models.subscription.SubscriptionRequest;
+import seerbit.backend.models.subscription.SubscriptionResponse;
 import seerbit.backend.services.SubscriptionService;
 
 @RestController

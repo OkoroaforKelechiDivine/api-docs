@@ -1,4 +1,4 @@
-package seerbit.backend.models.dto;
+package seerbit.backend.models.subscription;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

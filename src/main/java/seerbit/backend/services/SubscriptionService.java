@@ -6,8 +6,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import seerbit.backend.models.dto.SubscriptionRequest;
-import seerbit.backend.models.dto.SubscriptionResponse;
+import seerbit.backend.models.subscription.SubscriptionRequest;
+import seerbit.backend.models.subscription.SubscriptionResponse;
 @Service
 public class SubscriptionService {
 

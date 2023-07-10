@@ -1,8 +1,10 @@
-package seerbit.backend.models.dto;
+package seerbit.backend.models.subscription;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import seerbit.backend.models.merchant.MerchantSubscription;
+import seerbit.backend.models.payments.Payments;
 
 import java.util.List;
 

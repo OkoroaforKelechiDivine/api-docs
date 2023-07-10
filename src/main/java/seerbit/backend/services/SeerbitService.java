@@ -1,7 +1,7 @@
 package seerbit.backend.services;
 import org.springframework.stereotype.Service;
 import seerbit.backend.models.dto.ApiResponse;
-import seerbit.backend.models.dto.PaymentRequest;
+import seerbit.backend.models.payments.PaymentRequest;
 
 import java.io.IOException;
 import java.net.URI;

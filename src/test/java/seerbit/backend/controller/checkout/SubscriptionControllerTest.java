@@ -9,7 +9,11 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-import seerbit.backend.models.dto.*;
+import seerbit.backend.models.merchant.MerchantSubscription;
+import seerbit.backend.models.payments.Payments;
+import seerbit.backend.models.subscription.SubscriptionData;
+import seerbit.backend.models.subscription.SubscriptionRequest;
+import seerbit.backend.models.subscription.SubscriptionResponse;
 import seerbit.backend.services.SubscriptionService;
 
 import java.util.ArrayList;
