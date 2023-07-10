@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SeerBit Simple Checkout</title>
+    <script src="https://checkout.seerbitapi.com/api/v2/seerbit.js"></script>
+</head>
+<body>
+<button onclick="paywithSeerbit()">Pay Now</button>
+
+<script type="text/javascript">
+    function paywithSeerbit() {
+        var timestamp = new Date().getTime().toString();
+
+        SeerbitPay({
+                "public_key": "SBPUBK_DQ24K6T5TI1WOAOYPWWYMGMHKDRVEGPW",
+                "tranref": timestamp,
+                "currency": "NGN",
+                "country": "NG",
+                "amount": "150.00",
+                "email": "test@emaildomain.com",
+                "setAmountByCustomer": false,
+                "full_name": "John Doe", // optional
+                "tokenize": false, // set to true to allow token capture
+                "planId": "123456abcd", // subscription plan id.
+                "callbackurl": "https://youtube.com"
+            },
+            function callback(response, closeModal) {
+                console.log(response); // response of transaction
+            },
+            function close(close) {
+                console.log(close); // transaction close
+            });
+    }
+</script>
+</body>
+</html>
