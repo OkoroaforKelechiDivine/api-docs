@@ -1,4 +1,4 @@
-package seerbit.backend.controller.checkout;
+package seerbit.backend.controller.subscription;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
