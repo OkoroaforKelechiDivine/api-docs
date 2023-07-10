@@ -63,9 +63,7 @@ public class SubscriptionControllerTest {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Void> entity = new HttpEntity<>(headers);
-
         ResponseEntity<SubscriptionResponse> responseEntity = ResponseEntity.ok(expectedResponse);
-
         when(restTemplate.postForEntity(url, entity, SubscriptionResponse.class, publicKey)).thenReturn(responseEntity);
         SubscriptionResponse actualResponse = subscriptionService.getMerchantSubscriptions(publicKey);
 
