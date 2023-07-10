@@ -54,9 +54,8 @@ public class SeerbitService {
 
         try {
             HttpResponse<String> httpResponse = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-            ApiResponse response = JsonUtils.fromJson(httpResponse.body(), ApiResponse.class);
 
-            return response;
+            return JsonUtils.fromJson(httpResponse.body(), ApiResponse.class);
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
             return null;
