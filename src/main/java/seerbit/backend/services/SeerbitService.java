@@ -18,7 +18,6 @@ public class SeerbitService {
     private static final String API_PUBLIC_KEY = "SBPUBK_DQ24K6T5TI1WOAOYPWWYMGMHKDRVEGPW";
     public void processPayment(PaymentRequest paymentRequest) {
         Map<String, Object> requestData = preparePaymentRequest(paymentRequest);
-
         ApiResponse response = sendApiRequest("/payments", requestData);
 
         assert response != null;
@@ -55,13 +54,10 @@ public class SeerbitService {
 
         try {
             HttpResponse<String> httpResponse = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-
-            // Parse the API response JSON into ApiResponse object
             ApiResponse response = JsonUtils.fromJson(httpResponse.body(), ApiResponse.class);
 
             return response;
         } catch (IOException | InterruptedException e) {
-            // Handle any exceptions that occurred during the API request
             e.printStackTrace();
             return null;
         }
