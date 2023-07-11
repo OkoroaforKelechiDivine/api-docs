@@ -29,10 +29,8 @@ public class CheckoutControllerTest {
     }
 
     @Test
-    public void testPaywithSeerbit() throws Exception {
+    public void test_payWithSeerbit() throws Exception {
         Mockito.doNothing().when(seerbitService).processPayment(Mockito.any());
-
-        mockMvc.perform(MockMvcRequestBuilders.post("/pay"))
-                .andExpect(MockMvcResultMatchers.status().isOk());
+        mockMvc.perform(MockMvcRequestBuilders.post("/pay")).andExpect(MockMvcResultMatchers.status().isOk());
     }
 }
