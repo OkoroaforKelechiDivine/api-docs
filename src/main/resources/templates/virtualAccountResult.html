@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+  <title>Virtual Account Result</title>
+</head>
+
+<body>
+    <h2>Virtual Account Creation Result</h2>
+    <p>Status: <span th:text="${response.status}"></span></p>
+    <p>Code: <span th:text="${response.data.code}"></span></p>
+    <p>Reference: <span th:text="${response.data.payments.reference}"></span></p>
+    <p>Wallet Name: <span th:text="${response.data.payments.walletName}"></span></p>
+    <p>Bank Name: <span th:text="${response.data.payments.bankName}"></span></p>
+    <p>Account Number: <span th:text="${response.data.payments.accountNumber}"></span></p>
+    <p>Message: <span th:text="${response.data.message}"></span></p>
+</body>
+</html>
