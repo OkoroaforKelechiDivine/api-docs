@@ -1,12 +1,10 @@
 package seerbit.backend.controller.virutalAccount;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import seerbit.backend.models.dto.VirtualAccountResponse;
 import seerbit.backend.models.virtualAccount.VirtualAccount;
 import seerbit.backend.services.virtualAccount.VirtualAccountService;
@@ -33,6 +31,16 @@ public class VirtualAccountController {
             return ResponseEntity.ok(accountResponse);
         } else {
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/virtual-account/{reference}")
+    public ResponseEntity<String> deleteVirtualAccount(@PathVariable String reference) {
+        try {
+            virtualAccountService.deleteVirtualAccount(reference);
+            return ResponseEntity.ok("Virtual account has been deleted");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred");
         }
     }
 }
