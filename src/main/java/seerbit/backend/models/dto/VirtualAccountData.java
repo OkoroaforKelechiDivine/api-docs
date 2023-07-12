@@ -15,4 +15,6 @@ public class VirtualAccountData {
     private VirtualAccountPayment payments;
 
     private String message;
+
+    private String paymentReference;
 }

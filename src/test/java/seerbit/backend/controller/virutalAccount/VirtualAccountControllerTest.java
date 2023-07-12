@@ -1,11 +1,15 @@
 package seerbit.backend.controller.virutalAccount;
 
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import seerbit.backend.models.dto.VirtualAccountData;
 import seerbit.backend.models.dto.VirtualAccountResponse;
 import seerbit.backend.models.virtualAccount.VirtualAccount;
@@ -54,5 +58,23 @@ public class VirtualAccountControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("virtualAccountResult"))
                 .andExpect(model().attribute("response", response));
+    }
+
+    @Test
+    public void test_getVirtualAccount() throws Exception {
+        String paymentReference = "VA_1";
+
+        VirtualAccountData data = new VirtualAccountData();
+        data.setPaymentReference(paymentReference);
+
+        VirtualAccountResponse virtualAccountResponse = new VirtualAccountResponse();
+        virtualAccountResponse.setStatus("SUCCESS");
+        virtualAccountResponse.setData(data);
+
+        Mockito.when(virtualAccountService.getVirtualAccount(paymentReference)).thenReturn(virtualAccountResponse);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/virtual-accounts/{paymenteference}", paymentReference))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.reference", Matchers.is(paymentReference)));
     }
 }
