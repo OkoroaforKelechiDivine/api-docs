@@ -19,7 +19,7 @@ public class VirtualAccount {
 
     private String country;
 
-    private String reference;
+    private String linkingReference;
 
     private String email;
 }
