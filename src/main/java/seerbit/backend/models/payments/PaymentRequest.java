@@ -22,4 +22,15 @@ public class PaymentRequest {
     private String email;
 
     private String fullName;
+
+    private String country;
+
+    private String paymentReference;
+
+    private String productId;
+
+    private String productDescription;
+
+    private String callbackUrl;
+
 }

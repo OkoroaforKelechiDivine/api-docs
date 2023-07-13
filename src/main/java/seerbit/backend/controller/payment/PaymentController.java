@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import seerbit.backend.services.payment.PaymentService;
 
+import java.math.BigDecimal;
+
 @RestController
 @RequestMapping("/payments")
 public class PaymentController {
@@ -17,14 +19,17 @@ public class PaymentController {
     }
 
     @PostMapping("/initialize")
-    public ResponseEntity<String> initializePayment(@RequestParam String merchantPrivateKey, @RequestParam String merchantPublicKey) {
-        String bearerToken = paymentService.generateBearerToken(merchantPrivateKey, merchantPublicKey);
-
-        String checkoutLink = generateCheckoutLink(bearerToken);
-        return ResponseEntity.ok("Checkout link: " + checkoutLink);
+    public ResponseEntity<String> initializePayment(@RequestParam String merchantPublicKey, @RequestParam BigDecimal amount, @RequestParam String currency,
+                                                    @RequestParam String country, @RequestParam String paymentReference, @RequestParam String email,
+                                                    @RequestParam(required = false) String productId, @RequestParam(required = false) String productDescription, @RequestParam String callbackUrl) {
+        String redirectLink = paymentService.generatePaymentLink(merchantPublicKey, amount, currency, country, paymentReference, email, productId, productDescription, callbackUrl);
+        return ResponseEntity.ok("Redirect link: " + redirectLink);
     }
 
-    private String generateCheckoutLink(String bearerToken) {
-        return "https://example.com/checkout?token=" + bearerToken;
+    private String generateRedirectLink(String bearerToken) {
+        String seerBitRedirectLink = "https://seerbit.com/redirect-link?token=" + bearerToken;
+        String callbackUrl = "https://seerbit.com/callback";
+
+        return seerBitRedirectLink + "&callback_url=" + callbackUrl;
     }
 }
