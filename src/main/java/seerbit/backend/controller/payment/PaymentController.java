@@ -25,11 +25,4 @@ public class PaymentController {
         String redirectLink = paymentService.generatePaymentLink(merchantPublicKey, amount, currency, country, paymentReference, email, productId, productDescription, callbackUrl);
         return ResponseEntity.ok("Redirect link: " + redirectLink);
     }
-
-    private String generateRedirectLink(String bearerToken) {
-        String seerBitRedirectLink = "https://seerbit.com/redirect-link?token=" + bearerToken;
-        String callbackUrl = "https://seerbit.com/callback";
-
-        return seerBitRedirectLink + "&callback_url=" + callbackUrl;
-    }
 }
